@@ -55,7 +55,7 @@ const DeliveryScreen = () => {
                             20-30 Minutes
                         </Text>
                         <Text className="mt-2 font-semibold text-gray-700">
-                            Your order is on its way!{restaurant.lat}
+                            Your order is on its way!
                         </Text>
                     </View>
                     <Image className="h-24 w-24" source={require('../assets/images/bikeGuy2.gif')}/>

@@ -1,5 +1,5 @@
-import { StyleSheet, Text, View, SafeAreaView, TextInput, ScrollView } from 'react-native'
-import React,{useEffect,useState} from 'react'
+import { StyleSheet, Text, View, SafeAreaView, TextInput, ScrollView, RefreshControl } from 'react-native'
+import React, { useEffect, useState } from 'react'
 import { StatusBar } from 'expo-status-bar'
 import * as Icon from "react-native-feather"
 import { themeColors } from '../theme'
@@ -9,14 +9,22 @@ import { featured } from '../constants'
 import { getFeaturedRestaurants } from '../api'
 
 const HomeScreen = () => {
-    const [featured,setFeatured] = useState([]);
-    useEffect(() => {
-        getFeaturedRestaurants().then((data)=>{
-          setFeatured(data);
-          console.log(data);
-        })
-        
-      }, []);
+    const [featured, setFeatured] = useState([]);
+    const [refreshing, setRefreshing] = useState(false);
+
+
+    const fetchFeatured = () => {
+        setRefreshing(true);
+        getFeaturedRestaurants().then((data) => {
+            setFeatured(data);
+            setRefreshing(false);
+        });
+
+    }
+
+    useEffect(()=>{
+        fetchFeatured();
+    },[]);
     return (
         <SafeAreaView className="bg-white flex-1">
             <StatusBar barStyle="dark-content" />
@@ -42,21 +50,24 @@ const HomeScreen = () => {
                 contentContainerStyle={{
                     paddingBottom: 20
                 }}
+                refreshControl={
+                    <RefreshControl refreshing={refreshing} onRefresh={fetchFeatured} />
+                  }
             >
                 {/**categories */}
-                <Categories/>
+                <Categories />
 
 
                 {/**featured */}
                 <View className="mt-5">
                     {
-                        featured.map((item,index)=>{
-                            return(
+                        featured.map((item, index) => {
+                            return (
                                 <FeaturedRow
-                                key={index}
-                                title={item.name}
-                                restaurants={item.restaurants}
-                                description={item.description}
+                                    key={index}
+                                    title={item.name}
+                                    restaurants={item.restaurants}
+                                    description={item.description}
                                 />
 
                             )

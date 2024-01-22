@@ -8,7 +8,6 @@ import { urlFor } from '../sanity'
 
 const RestaurantCard = ({ item }) => {
     const navigation = useNavigation();
-    console.log('item',item)
     return (
         <TouchableWithoutFeedback
             onPress={() => navigation.navigate('Restaurant', { ...item })}

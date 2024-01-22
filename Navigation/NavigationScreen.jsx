@@ -7,6 +7,8 @@ import RestaurantScreen from '../screens/RestaurantScreen';
 import CartScreen from '../screens/CartScreen';
 import OrderPreparingScreen from '../screens/OrderPreparingScreen';
 import DeliveryScreen from '../screens/DeliveryScreen';
+import LoginScreen from '../screens/LoginScreen';
+import RegisterScreen from '../screens/RegisterScreen';
 
 
 
@@ -15,14 +17,16 @@ const Stack = createNativeStackNavigator();
 const NavigationScreen = () => {
   return (
     <NavigationContainer>
-        <Stack.Navigator>
-            <Stack.Screen name="Home" component={HomeScreen} options={{headerShown:false}}/>
-            <Stack.Screen name="Restaurant" component={RestaurantScreen} options={{headerShown:false}}/>
-            <Stack.Screen name="Cart" component={CartScreen} options={{presentation:'modal',headerShown:false}}/>
-            <Stack.Screen name="OrderPreparing" component={OrderPreparingScreen} options={{presentation:'fullScreenModal',headerShown:false}}/>
-            <Stack.Screen name="Delivery" component={DeliveryScreen} options={{presentation:'fullScreenModal',headerShown:false}}/>
+      <Stack.Navigator>
+        <Stack.Screen name="Login" component={LoginScreen} options={{ headerShown: false }} />
+        <Stack.Screen name="Register" component={RegisterScreen} options={{presentation:'modal',headerShown:false}}/>
+        <Stack.Screen name="Home" component={HomeScreen} options={{ headerShown: false }} />
+        <Stack.Screen name="Restaurant" component={RestaurantScreen} options={{ headerShown: false }} />
+        <Stack.Screen name="Cart" component={CartScreen} options={{ presentation: 'modal', headerShown: false }} />
+        <Stack.Screen name="OrderPreparing" component={OrderPreparingScreen} options={{ presentation: 'fullScreenModal', headerShown: false }} />
+        <Stack.Screen name="Delivery" component={DeliveryScreen} options={{ presentation: 'fullScreenModal', headerShown: false }} />
 
-        </Stack.Navigator>
+      </Stack.Navigator>
     </NavigationContainer>
   )
 }

@@ -87,7 +87,7 @@ const CartScreen = () => {
                                 <Text className="flex-1 font-bold text-gray-700">{dish.name}</Text>
                                 <Text className="text-base font-semibold">${dish.price}</Text>
                                 <TouchableOpacity 
-                                onPress={() =>dispatch(removeFromCart({id:dish.id}))}
+                                onPress={() =>dispatch(removeFromCart({id:dish._id}))}
                                 className="p-1 rounded-full" 
                                 style={{ backgroundColor: themeColors.bgColor(1) }}
                                 >
